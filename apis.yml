@@ -18,7 +18,12 @@ description: EIS Group (EIS Ltd) is a United States core-systems vendor for insu
   rather than APIs. ACORD is attested only indirectly — an analyst evaluation hosted on
   eisgroup.com states the system integrates using "web services, APIs, RESTful APIs,
   ACORD and certified ACORD" — with no ACORD artifacts, AL3 mappings, or IVANS/agency-download
-  detail published. This is the canonical United States core-systems posture — the APIs
+  detail published. What EIS does publish is a substantial certification posture — a certified
+  MACH Alliance membership (Microservices, API-first, Cloud-native SaaS, Headless) and a full
+  ISO stack covering 27001, 27701, 22301, 27017, 27018, 27035-1, 12207, 15288, 25000 and
+  ISO/IEC 42001, which EIS announced in June 2025 as the first cloud-native insurance
+  core platform provider to obtain. One first-party package is public, eis-ui-render on npm.
+  This is the canonical United States core-systems posture — the APIs
   exist and are sold, but they are reachable only through a licensed implementation.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
@@ -39,6 +44,8 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/eis-group-domain-security.yml
 - type: Website
   url: https://www.eisgroup.com/
 - type: Documentation
@@ -59,6 +66,26 @@ common:
   url: https://www.linkedin.com/company/eisgroupltd
 - type: Contact
   url: https://www.eisgroup.com/company/contact/
+- type: Support
+  url: https://www.eisgroup.com/company/contact/
+- type: TermsOfService
+  url: https://www.eisgroup.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.eisgroup.com/privacy-statement/
+- type: Compliance
+  url: https://www.eisgroup.com/company#CertificationsRecognitions
+- type: Conformance
+  url: conformance/eis-group-conformance.yml
+- type: Packages
+  url: packages/eis-group-packages.yml
+- type: Components
+  url: components/eis-group-components.yml
+- type: LLMsTxt
+  url: llms/eis-group-llms.txt
+- type: OpenSource
+  url: https://github.com/eisgroup/ui-render
+- type: Certifications
+  url: https://machalliance.org/members/eis
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

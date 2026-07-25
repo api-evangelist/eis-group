@@ -1,0 +1,65 @@
+generated: '2026-07-25'
+method: searched
+source: https://www.npmjs.com/package/eis-ui-render, https://github.com/eisgroup
+summary: |
+  EIS Group publishes no API client SDK. Its entire REST surface (1,100+ DXP APIs
+  announced 2019, 9,000+ claimed for OneSuite) sits behind the docs.eisgroup.com HTTP
+  Basic wall, so there is nothing public for a client library to target. The only
+  first-party package published to a public registry is eis-ui-render, the npm build of
+  the open-source github.com/eisgroup/ui-render JSON-schema-driven React renderer. The
+  second open-source project, kraken-rules, is Apache-2.0 source on GitHub but its Java
+  modules use the non-Central groupId "kraken" and its JavaScript packages declare
+  publishConfig.registry = https://genesis-npm-release.exigengroup.com/ (an EIS-internal
+  Nexus), so no kraken artifact resolves from Maven Central or npmjs.org.
+packages:
+- language: javascript
+  registry: npm
+  name: eis-ui-render
+  url: https://registry.npmjs.org/eis-ui-render
+  install: npm install eis-ui-render
+  version: 0.34.2
+  license: Apache-2.0
+  official: true
+  sdk: false
+  description: UI generation based on JSON schemas — the published build of EIS Group's
+    open-source ui-render recursive React component renderer.
+  source_code: https://github.com/eisgroup/ui-render
+  docs: https://eisgroup.github.io/ui-render/
+  first_published: '2021-11-10'
+  last_published: '2026-05-29'
+  note: Client-side UI rendering library, not an API client SDK.
+unpublished:
+- name: kraken-rules
+  language: java
+  source_code: https://github.com/eisgroup/kraken-rules
+  license: Apache-2.0
+  coordinates: 'groupId: kraken (bom/pom.xml, version 1.55.0)'
+  registry: none-public
+  evidence: groupId "kraken" returns 0 results on Maven Central (search.maven.org and
+    central.sonatype.com); no kraken artifact is published to a public repository.
+- name: kraken-engine-api / kraken-model / kraken-expression-language (and siblings)
+  language: typescript
+  source_code: https://github.com/eisgroup/kraken-rules/tree/main/javascript/packages
+  registry: private
+  evidence: 'package.json publishConfig.registry =
+    https://genesis-npm-release.exigengroup.com/repository/genesis-npm-release/ — an
+    EIS-internal Nexus that does not resolve publicly (curl 000). npm registry returns
+    404 for kraken-rules, kraken-model and @eisgroup/* names.'
+registries_probed:
+- registry: npm
+  result: 1 first-party package (eis-ui-render); kraken-* names 404
+- registry: maven-central
+  result: 0 results for groupId kraken / term eisgroup
+- registry: pypi
+  result: none — EIS ships no Python client
+- registry: nuget
+  result: none
+- registry: rubygems
+  result: none
+- registry: packagist
+  result: none
+- registry: crates.io
+  result: none
+- registry: pkg.go.dev
+  result: none
+sdk_count: 0

@@ -1,0 +1,28 @@
+generated: '2026-07-25'
+method: searched
+source: https://eisgroup.github.io/ui-render/
+summary: |
+  EIS Group ships one public client-side component library: ui-render (published to npm as
+  eis-ui-render), an open-source recursive React renderer that builds UI from JSON
+  configuration/schemas. It is the presentation layer used with the EIS Platform portals,
+  not a hosted or embeddable widget for a public API — EIS publishes no hosted checkout,
+  embedded dashboard, or drop-in web-component surface, because no public API exists to
+  back one.
+families:
+- name: ui-render
+  kind: javascript-component-library
+  loader: npm package eis-ui-render (React 16.14 + react-dom + moment as peer deps)
+  install: npm install eis-ui-render react@^16.14.0 react-dom@^16.14.0 moment@~2.29.4
+  docs: https://eisgroup.github.io/ui-render/
+  configuration_docs: https://eisgroup.github.io/ui-render/configuration
+  demo: https://eisgroup.github.io/ui-render/
+  source_code: https://github.com/eisgroup/ui-render
+  license: Apache-2.0
+  description: Recursive UI rendering with dynamic React components — UI generation driven
+    by JSON schemas/configuration, with form handling bundled (final-form family).
+  official: true
+hosted_surfaces: []
+web_components: []
+note: No embeddable/hosted UI surface is offered publicly; EIS portals
+  (https://www.eisgroup.com/digital-insurance-solutions/portals/) are delivered inside a
+  licensed implementation.

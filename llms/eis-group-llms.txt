@@ -1,0 +1,67 @@
+# EIS Group
+
+> EIS Group (EIS Software Limited / EIS Ltd) is a San Francisco, California core-systems vendor for insurance, founded in 2008 out of Exigen Insurance Solutions. EIS sells the EIS Platform and EIS OneSuite — a cloud-native, microservices core suite covering customer management, policy administration, billing, and claims — across group benefits, property and casualty / general, protection, life and annuities, and pet insurance. EIS markets itself as API-first and is a certified MACH Alliance member, but its API surface is not public: there is no self-serve developer portal, and docs.eisgroup.com answers HTTP 401 behind an HTTP Basic realm named "EIS Group Users".
+
+## API access
+
+- [Documentation (gated)](https://docs.eisgroup.com/): HTTP 401 on every path; `WWW-Authenticate: Basic realm="EIS Group Users"`. Customer/partner login wall, not a developer portal.
+- [Partner application](https://www.eisgroup.com/company/partner-application/): the actual route to API access — API documentation, sandbox, and credentials are granted through a licensed implementation or a partner agreement.
+- [Partners](https://www.eisgroup.com/company/partners/): PwC, EY, Accenture, AWS, Azure, IBM.
+- No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, .proto, or public Postman collection is retrievable. `developer.`, `developers.`, `api.`, `apidocs.`, `portal.`, `sandbox.` on eisgroup.com do not resolve.
+
+## Specifications
+
+- None published. `/openapi.json`, `/swagger.json`, `/api-docs` return 404 on www.eisgroup.com and 401 on docs.eisgroup.com.
+- Scale claimed but unverifiable: "over 1,100 REST APIs" (EIS DXP, 2019 press release); "9,000+ APIs" (EIS OneSuite marketing).
+- Integration transports named by an analyst evaluation: REST/web services, ACORD and certified ACORD, JMS, AMQP, Kafka.
+
+## Open source
+
+- [ui-render](https://github.com/eisgroup/ui-render): recursive UI rendering with dynamic React components; published to npm as [eis-ui-render](https://registry.npmjs.org/eis-ui-render) (Apache-2.0). Docs: https://eisgroup.github.io/ui-render/
+- [kraken-rules](https://github.com/eisgroup/kraken-rules): Java business rules engine (Apache-2.0). Java modules use groupId `kraken` and the JavaScript packages publish to an EIS-internal Nexus — nothing resolves from Maven Central or npmjs.org.
+- [github.com/eis-group-opensource](https://github.com/eis-group-opensource): 75 repositories, forks of third-party Java/Scala libraries used in EIS builds. No EIS API definitions.
+
+## Products
+
+- [EIS OneSuite / Core Transformation Platform](https://www.eisgroup.com/digital-insurance-solutions/core-transformation-platform/)
+- [PolicyCore — policy administration](https://www.eisgroup.com/digital-insurance-solutions/policy-administration/)
+- [BillingCore — billing management](https://www.eisgroup.com/digital-insurance-solutions/billing-management/)
+- [ClaimCore — claims management](https://www.eisgroup.com/digital-insurance-solutions/claims-management/)
+- [CustomerCore — customer-centric management](https://www.eisgroup.com/digital-insurance-solutions/customer-centric-management/)
+- [Portals](https://www.eisgroup.com/digital-insurance-solutions/portals/)
+- Lines served: [group benefits](https://www.eisgroup.com/digital-insurance-solutions/group-benefits/), [property & casualty / general](https://www.eisgroup.com/digital-insurance-solutions/property-and-casualty-general-insurance/), [protection](https://www.eisgroup.com/digital-insurance-solutions/protection/), [life & annuities](https://www.eisgroup.com/digital-insurance-solutions/life-annuities/), [pet insurance](https://www.eisgroup.com/digital-insurance-solutions/pet-insurance/)
+
+## Certifications
+
+- [EIS Certifications & Recognitions](https://www.eisgroup.com/company#CertificationsRecognitions): ISO/IEC 27001:2022, ISO 27701:2025, ISO 22301:2019, ISO/IEC 27017:2015, ISO/IEC 27018:2019, ISO/IEC 27035-1:2023, ISO/IEC 42001:2023, ISO 12207:2017, ISO 15288:2015, ISO 25000:2018, IAS Accredited.
+- [MACH Alliance certified member](https://machalliance.org/members/eis) — Microservices, API-first, Cloud-native SaaS, Headless.
+- [ISO/IEC 42001 announcement](https://www.eisgroup.com/2025/06/25/eis-first-cloud-native-insurance-core-platform-provider-to-earn-iso-iec-42001-certification/) (2025-06-25).
+
+## Company
+
+- [Website](https://www.eisgroup.com/)
+- [Blog](https://www.eisgroup.com/blog/) · [RSS](https://www.eisgroup.com/feed/)
+- [Newsroom](https://www.eisgroup.com/company/newsroom/) · [Press releases](https://www.eisgroup.com/company/press-releases/)
+- [Resources center](https://www.eisgroup.com/resources-center/) · [EIS University](https://www.eisgroup.com/eis-university/)
+- [Leadership](https://www.eisgroup.com/company/leadership/) · [Careers](https://careers.eisgroup.com/)
+- [Contact / Support](https://www.eisgroup.com/company/contact/)
+- [Terms of Use](https://www.eisgroup.com/terms-of-use/) · [Privacy Statement](https://www.eisgroup.com/privacy-statement/)
+- [LinkedIn](https://www.linkedin.com/company/eisgroupltd) · [GitHub](https://github.com/eisgroup)
+
+## API Evangelist artifacts
+
+- apis.yml: https://raw.githubusercontent.com/api-evangelist/eis-group/refs/heads/main/apis.yml
+- review.yml: https://raw.githubusercontent.com/api-evangelist/eis-group/refs/heads/main/review.yml
+- conformance/eis-group-conformance.yml — certifications, MACH, ACORD attestation, observability of API standards
+- packages/eis-group-packages.yml — registry sweep (npm, Maven Central, PyPI, NuGet, RubyGems, Packagist, crates.io, pkg.go.dev)
+- components/eis-group-components.yml — ui-render component library
+- well-known/eis-group-well-known.yml — /.well-known/ probe results (none served)
+- security/eis-group-domain-security.yml — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe
+
+## Notes for agents
+
+- There is no anonymous machine-readable contract for EIS Group. Do not attempt to construct one: every quote, bind, issue, and FNOL capability EIS markets is reachable only inside a licensed EIS implementation.
+- Authentication model is undocumented publicly. The only observable scheme is HTTP Basic on the documentation host, which guards docs — it is not the API auth scheme.
+- No status page, versioning policy, deprecation policy, changelog, sandbox, or CLI is published.
+
+<!-- generated: 2026-07-25 | method: generated | source: apis.yml + review.yml + live probes of eisgroup.com (no /llms.txt is published: www 404, docs 401) -->

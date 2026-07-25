@@ -1,0 +1,130 @@
+generated: '2026-07-25'
+method: searched
+source: https://www.eisgroup.com/company#CertificationsRecognitions
+summary: |
+  EIS Group publishes a substantial certification posture on its company page
+  ("EIS Certifications & Recognitions") — a full ISO management-system stack including
+  ISO/IEC 27001:2022, 27701, 27017, 27018, 27035-1, 22301, the software-lifecycle set
+  (12207 / 15288 / 25000), and ISO/IEC 42001:2023, which EIS announced in June 2025 as
+  the first cloud-native insurance core platform provider to obtain. EIS is also a
+  certified MACH Alliance member (Microservices, API-first, Cloud-native SaaS, Headless),
+  the strongest third-party attestation of its API-first architecture claim.
+  API-level conformance, by contrast, is unverifiable: no OpenAPI, AsyncAPI, GraphQL SDL
+  or .proto is public, no OAuth/OIDC discovery document is served, and ACORD support is
+  attested only second-hand in an analyst evaluation hosted on eisgroup.com. Every
+  "conforms: null" row below is unobservable rather than failing — the contract is behind
+  the docs.eisgroup.com HTTP Basic wall.
+standards:
+- id: mach-alliance
+  name: MACH (Microservices, API-first, Cloud-native SaaS, Headless)
+  conforms: true
+  evidence: 'Certified MACH Alliance member; listed at https://machalliance.org/members/eis
+    (HTTP 200). EIS company timeline records "2025 MACH certification".'
+  source: https://machalliance.org/members/eis
+- id: iso-iec-27001
+  name: ISO/IEC 27001:2022 Information Security Management
+  conforms: true
+  evidence: 'Listed verbatim under "EIS Certifications & Recognitions" as "ISO/IEC
+    27001:2022 Certified".'
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-27701
+  name: ISO 27701:2025 Privacy Information Management
+  conforms: true
+  evidence: Listed as "ISO 27701:2025 Certified".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-22301
+  name: ISO 22301:2019 Business Continuity Management
+  conforms: true
+  evidence: Listed as "ISO 22301:2019 Certified".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-iec-27017
+  name: ISO/IEC 27017:2015 Cloud Security Controls
+  conforms: true
+  evidence: Listed as "ISO/IEC 27017:2015 Certified".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-iec-27018
+  name: ISO/IEC 27018:2019 Protection of PII in Public Clouds
+  conforms: true
+  evidence: Listed as "ISO/IEC 27018:2019 Certified".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-iec-27035-1
+  name: ISO/IEC 27035-1:2023 Information Security Incident Management
+  conforms: true
+  evidence: Listed as "ISO/IEC 27035-1:2023 Certified".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-iec-42001
+  name: ISO/IEC 42001:2023 Artificial Intelligence Management System (AIMS)
+  conforms: true
+  evidence: 'Listed as "ISO/IEC 42001:2023 Certified"; announced 2025-06-25 as the first
+    insurance core system provider to obtain the certification.'
+  source: https://www.eisgroup.com/2025/06/25/eis-first-cloud-native-insurance-core-platform-provider-to-earn-iso-iec-42001-certification/
+- id: iso-iec-12207
+  name: ISO 12207:2017 Software Life Cycle Processes
+  conforms: true
+  evidence: Listed as "ISO 12207:2017 Software Development LifeCycle".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-iec-15288
+  name: ISO 15288:2015 System Life Cycle Processes
+  conforms: true
+  evidence: Listed as "ISO 15288:2015 Software Development LifeCycle".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: iso-25000
+  name: ISO 25000:2018 Systems and Software Quality (SQuaRE)
+  conforms: true
+  evidence: Listed as "ISO 25000:2018 Systems and Software Quality Management System
+    Member".
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: ias-accreditation
+  name: IAS Accredited
+  conforms: true
+  evidence: Listed as "IAS Accredited" in the certifications block.
+  source: https://www.eisgroup.com/company#CertificationsRecognitions
+- id: ibm-fs-certification
+  name: IBM Financial Services Cloud certification
+  conforms: true
+  evidence: 'Company timeline entry "2023/4 IBM FS certification".'
+  source: https://www.eisgroup.com/company/
+- id: acord
+  name: ACORD standards / certified ACORD
+  conforms: attested
+  evidence: 'Aite Matrix "2020 US P&C Core Systems Evaluation" (PDF hosted on
+    eisgroup.com), verbatim: "The system uses web services, APIs, RESTful APIs, ACORD and
+    certified ACORD to integrate ETPD. It can also use JMS, AMQP, and Kafka." No ACORD XML
+    schema, AL3 mapping, NGDS reference or IVANS/agency-download documentation is public.'
+  source: https://www.eisgroup.com/wp-content/uploads/2022/10/aite-matrix-2020-u-s-pc-core-systems-evaluation.pdf
+- id: rest
+  name: REST / HTTP APIs
+  conforms: attested
+  evidence: '2019 press release announces "over 1,100 REST APIs" in EIS DXP; OneSuite
+    marketing claims 9,000+ APIs. No base URL, reference or specification is public.'
+  source: https://www.eisgroup.com/2019/05/22/eis-dxp-hits-milestone-with-1100-open-apis-now-available-to-insurers/
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger document is retrievable on www.eisgroup.com (404) or
+    docs.eisgroup.com (401 on every path, including /openapi.json and /swagger.json).
+- id: asyncapi
+  conforms: false
+  evidence: 'No AsyncAPI document and no public event catalog. Platform is marketed as
+    event-driven and the Aite evaluation names JMS, AMQP and Kafka as transports, but no
+    topic list or message schema is published.'
+- id: graphql
+  conforms: false
+  evidence: https://www.eisgroup.com/graphql returns HTTP 404; no GraphQL surface found.
+- id: grpc-protobuf
+  conforms: false
+  evidence: No .proto files in github.com/eisgroup or github.com/eis-group-opensource.
+- id: oauth2
+  conforms: null
+  evidence: Not observable. No /.well-known/oauth-authorization-server on any EIS host
+    (404 on www, 401 on docs). Only observable auth is HTTP Basic on the documentation
+    wall, which is not an API auth scheme.
+- id: openid-connect
+  conforms: null
+  evidence: Not observable. /.well-known/openid-configuration returns 404 on
+    www.eisgroup.com and 401 on docs.eisgroup.com.
+- id: rfc9457-problem-details
+  conforms: null
+  evidence: Not observable — no specification or error reference is public.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.eisgroup.com.

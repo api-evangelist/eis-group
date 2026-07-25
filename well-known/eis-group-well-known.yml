@@ -1,0 +1,45 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of the EIS Group web and documentation hosts
+host: https://www.eisgroup.com
+summary: |
+  No /.well-known/ discovery surface is published by EIS Group. www.eisgroup.com returns
+  404 for every well-known document probed, and docs.eisgroup.com answers HTTP 401 with
+  WWW-Authenticate: Basic realm="EIS Group Users" on every path — including
+  /.well-known/* — so nothing can be retrieved anonymously. There is no security.txt, no
+  OIDC or OAuth authorization-server metadata, no api-catalog and no ai-plugin manifest.
+documents:
+- path: /.well-known/security.txt
+  host: https://www.eisgroup.com
+  status: 404
+- path: /security.txt
+  host: https://www.eisgroup.com
+  status: 404
+- path: /.well-known/openid-configuration
+  host: https://www.eisgroup.com
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: https://www.eisgroup.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: https://www.eisgroup.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: https://www.eisgroup.com
+  status: 404
+- path: /llms.txt
+  host: https://www.eisgroup.com
+  status: 404
+- path: /robots.txt
+  host: https://www.eisgroup.com
+  status: 200
+  note: Present but carries no API or well-known discovery hints.
+- path: /.well-known/openid-configuration
+  host: https://docs.eisgroup.com
+  status: 401
+  note: 'HTTP Basic wall, realm "EIS Group Users" — blanket, applies to every path.'
+- path: /llms.txt
+  host: https://docs.eisgroup.com
+  status: 401
+  note: Same Basic wall.
+found: 0
