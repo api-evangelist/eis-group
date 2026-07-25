@@ -1,0 +1,279 @@
+aid: eis-group
+name: EIS Group
+review:
+  question: Does EIS Group expose a public, self-serve developer portal and downloadable
+    API specifications for its insurance core platform?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: United States
+  sector: Insurance
+  tier: core-systems
+  openapiHarvested: false
+  specsCount: 0
+  gated: true
+findings:
+  summary: |
+    EIS Group (EIS Ltd) is a San Francisco, California core-systems vendor selling the
+    EIS Platform / EIS OneSuite policy, billing, claims, and customer suite to insurers
+    in group benefits, P&C / general, protection, life and annuities, and pet insurance.
+    EIS markets itself aggressively as API-first — a 2019 press release announced "over
+    1,100 REST APIs" in the EIS DXP digital experience platform, and current OneSuite
+    marketing claims "9,000+ APIs" — but none of that surface is publicly reachable.
+
+    There is no self-serve developer portal. developer.eisgroup.com, developers.eisgroup.com,
+    api.eisgroup.com, apidocs.eisgroup.com, portal.eisgroup.com, support.eisgroup.com,
+    community.eisgroup.com, developerportal.eisgroup.com and sandbox.eisgroup.com all fail
+    to resolve or connect (curl 000). eisgroup.com/developers and eisgroup.com/developer
+    both return HTTP 404. The one documentation host that exists, docs.eisgroup.com,
+    returns HTTP 401 with `WWW-Authenticate: Basic realm="EIS Group Users"` on every path
+    probed (/, /index.html, /api, /rest-api, /openapi.json, /swagger.json,
+    /.well-known/openid-configuration) — a blanket HTTP Basic wall in front of the entire
+    documentation tree, resolving through prod-proxy.eisgroup.com. That is a customer /
+    partner login wall, not a developer portal.
+
+    Zero OpenAPI, Swagger, GraphQL SDL, AsyncAPI, or .proto artifacts could be harvested.
+    Nothing on www.eisgroup.com serves a spec (/openapi.json, /swagger.json, /api-docs all
+    404). The public page-sitemap contains no developer, API-reference, or spec pages —
+    only marketing, use-case, partner, and resource pages. university.eisgroup.com resolves
+    (redirects to /learn, HTTP 200) but renders only a JavaScript loading shell with no
+    public content and no API reference.
+
+    EIS does publish two open-source GitHub repositories under github.com/eisgroup —
+    kraken-rules (Java business rules engine) and ui-render (React dynamic UI rendering).
+    A second organization, github.com/eis-group-opensource, holds 75 repositories, but
+    these are forks of third-party Java/Scala libraries (Spring, RxJava, Guava, Hibernate,
+    Liquibase, swagger-codegen) used in EIS builds, not EIS APIs. Neither org publishes an
+    API definition.
+
+    A Postman team profile exists at postman.com/eis-group-8390 (HTTP 200, created
+    2024-10-04) but the Postman public search index reports collectionCount 0,
+    workspaceCount 0, and apiCount 0 — an empty team profile with no published collections.
+
+    ACORD posture is attested only second-hand. The Aite Matrix "2020 US P&C Core Systems
+    Evaluation" PDF hosted on eisgroup.com states verbatim: "The system uses web services,
+    APIs, RESTful APIs, ACORD and certified ACORD to integrate ETPD. It can also use JMS,
+    AMQP, and Kafka." Site search for ACORD on eisgroup.com otherwise returns only a 2016
+    ACORD conference sponsorship press release. No ACORD XML schemas, AL3 mappings, NGDS
+    references, IVANS / agency-download detail, or Applied Epic / Vertafore AMS360
+    connector documentation is published anywhere public.
+
+    Quote / bind / issue / FNOL: EIS markets all four capabilities (rating and quoting,
+    policy issuance, and an FNOL use-case page at eisgroup.com/digital-insurance-solutions
+    covering claims automation, claims leakage, and FNOL), but none is exposed as a public
+    API. Every one of these verbs is reachable only inside a licensed EIS implementation.
+
+    Auth model: unknown / undocumented publicly. The only observable authentication on any
+    EIS host is HTTP Basic on docs.eisgroup.com. No /.well-known/openid-configuration or
+    /.well-known/oauth-authorization-server is served on www.eisgroup.com (both 404) or
+    anonymously on docs.eisgroup.com (401).
+
+    Webhooks / events: no public event catalog and no AsyncAPI. EIS marketing describes the
+    platform as "event-driven" and the Aite evaluation names JMS, AMQP, and Kafka as
+    integration transports, but no event schema, topic list, or subscription documentation
+    is public.
+
+    Verdict: honest stub. EIS Group is a real, substantial API producer whose entire API
+    estate is sold rather than published. The correct record for the United States
+    core-systems tier is partner-gated with zero harvestable artifacts.
+  portal:
+    url: https://docs.eisgroup.com/
+    httpStatus: 401
+    classification: partner/customer login wall
+    detail: 'HTTP Basic authentication, WWW-Authenticate: Basic realm="EIS Group Users";
+      applies to every path probed. Not a self-serve developer portal.'
+    selfServe: false
+  acordPosture: ACORD and certified ACORD integration attested in an analyst evaluation
+    hosted on eisgroup.com; no public ACORD/AL3/NGDS/IVANS artifacts
+  acordEvidence:
+    quote: The system uses web services, APIs, RESTful APIs, ACORD and certified ACORD
+      to integrate ETPD. It can also use JMS, AMQP, and Kafka.
+    source: https://www.eisgroup.com/wp-content/uploads/2022/10/aite-matrix-2020-u-s-pc-core-systems-evaluation.pdf
+    httpStatus: 200
+    fetched: '2026-07-25'
+    note: Aite Matrix 2020 US P&C Core Systems Evaluation, PDF hosted on eisgroup.com.
+      Extracted with pdftotext; single ACORD occurrence in the document.
+  insuranceVerbs:
+    quote:
+      marketed: true
+      publicApi: false
+      audience: licensed implementation only
+    bind:
+      marketed: true
+      publicApi: false
+      audience: licensed implementation only
+    issue:
+      marketed: true
+      publicApi: false
+      audience: licensed implementation only
+    fnol:
+      marketed: true
+      publicApi: false
+      audience: licensed implementation only
+      note: FNOL is a named use case at https://www.eisgroup.com/digital-insurance-solutions/
+        but no API is documented publicly.
+  authModel:
+    scheme: undocumented publicly
+    observed: HTTP Basic on docs.eisgroup.com (documentation wall, not an API auth scheme)
+    oidcDiscovery: false
+    oauthMetadata: false
+  webhooks:
+    documented: false
+    asyncapi: false
+    note: Platform marketed as event-driven; Aite evaluation names JMS, AMQP and Kafka as
+      transports. No public event catalog, topic list, or AsyncAPI document.
+  postman:
+    publicCollections: false
+    teamProfile: https://www.postman.com/eis-group-8390
+    note: Team profile exists (HTTP 200) but Postman public search reports 0 collections,
+      0 workspaces, 0 APIs.
+  graphql:
+    documented: false
+    note: https://www.eisgroup.com/graphql returns HTTP 404. No GraphQL surface found.
+  grpc:
+    documented: false
+    note: No published .proto files in either EIS GitHub organization.
+  openSource:
+    - url: https://github.com/eisgroup
+      httpStatus: 200
+      repos: 2
+      note: kraken-rules (Java business rules engine), ui-render (React dynamic UI
+        rendering). Libraries, not APIs.
+    - url: https://github.com/eis-group-opensource
+      repos: 75
+      note: Forks of third-party Java/Scala libraries used in EIS builds. No EIS API
+        definitions.
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: EIS markets 1,100+ (DXP, 2019) to 9,000+ (OneSuite) REST APIs, but the
+        reference is behind the docs.eisgroup.com HTTP Basic wall. No base URL is public.
+    - protocol: ACORD XML
+      documented: false
+      note: Attested via analyst evaluation only; no public schemas.
+    - protocol: JMS
+      documented: false
+      note: Named as an integration transport in the Aite evaluation.
+    - protocol: AMQP
+      documented: false
+      note: Named as an integration transport in the Aite evaluation.
+    - protocol: Kafka
+      documented: false
+      note: Named as an integration transport in the Aite evaluation.
+    - protocol: GraphQL
+      documented: false
+    - protocol: WebSocket
+      documented: false
+probes:
+  - url: https://eisgroup.com
+    httpStatus: 200
+    note: Redirects to https://www.eisgroup.com/
+  - url: https://www.eisgroup.com
+    httpStatus: 200
+  - url: https://developer.eisgroup.com
+    httpStatus: 0
+    note: Does not resolve / no connection.
+  - url: https://developers.eisgroup.com
+    httpStatus: 0
+    note: Does not resolve / no connection.
+  - url: https://docs.eisgroup.com
+    httpStatus: 401
+    note: 'HTTP Basic, realm "EIS Group Users". Resolves to prod-proxy.eisgroup.com.'
+  - url: https://api.eisgroup.com
+    httpStatus: 0
+  - url: https://apidocs.eisgroup.com
+    httpStatus: 0
+  - url: https://api-docs.eisgroup.com
+    httpStatus: 0
+  - url: https://portal.eisgroup.com
+    httpStatus: 0
+  - url: https://support.eisgroup.com
+    httpStatus: 0
+  - url: https://community.eisgroup.com
+    httpStatus: 0
+  - url: https://developerportal.eisgroup.com
+    httpStatus: 0
+  - url: https://sandbox.eisgroup.com
+    httpStatus: 0
+  - url: https://university.eisgroup.com
+    httpStatus: 200
+    note: Redirects to /learn; renders a JavaScript loading shell only, no public content.
+  - url: https://www.eisgroup.com/developers
+    httpStatus: 404
+  - url: https://www.eisgroup.com/developer
+    httpStatus: 404
+  - url: https://www.eisgroup.com/api-docs
+    httpStatus: 404
+  - url: https://www.eisgroup.com/openapi.json
+    httpStatus: 404
+  - url: https://www.eisgroup.com/swagger.json
+    httpStatus: 404
+  - url: https://docs.eisgroup.com/openapi.json
+    httpStatus: 401
+  - url: https://docs.eisgroup.com/swagger.json
+    httpStatus: 401
+  - url: https://docs.eisgroup.com/api
+    httpStatus: 401
+  - url: https://docs.eisgroup.com/rest-api
+    httpStatus: 401
+  - url: https://www.eisgroup.com/graphql
+    httpStatus: 404
+  - url: https://www.eisgroup.com/.well-known/openid-configuration
+    httpStatus: 404
+  - url: https://www.eisgroup.com/.well-known/oauth-authorization-server
+    httpStatus: 404
+  - url: https://docs.eisgroup.com/.well-known/openid-configuration
+    httpStatus: 401
+  - url: https://www.eisgroup.com/company/partners/
+    httpStatus: 200
+    note: Partner directory (PwC, EY, Accenture, AWS, Azure, IBM). API access is via a
+      partner application form, not documentation.
+  - url: https://www.eisgroup.com/company/partner-application/
+    httpStatus: 200
+  - url: https://www.eisgroup.com/sitemap_index.xml
+    httpStatus: 200
+    note: No developer, API-reference, or spec pages anywhere in the sitemap.
+  - url: https://www.eisgroup.com/blog/
+    httpStatus: 200
+  - url: https://www.eisgroup.com/feed/
+    httpStatus: 200
+sources:
+  - url: https://www.eisgroup.com/
+    type: Website
+    note: Marketing site. Products - Core Transformation Platform, Customer-Centric
+      Management, Policy Administration, Billing Management, Claims Management.
+  - url: https://docs.eisgroup.com/
+    type: Documentation
+    note: HTTP 401 Basic auth wall, realm "EIS Group Users". Gated.
+  - url: https://www.eisgroup.com/resources/product-overview-eis-platform/
+    type: Documentation
+    note: EIS Platform overview; claims "thousands of open APIs"; no ACORD mention; no
+      developer portal link.
+  - url: https://www.eisgroup.com/2019/05/22/eis-dxp-hits-milestone-with-1100-open-apis-now-available-to-insurers/
+    type: PressRelease
+    note: 'Verbatim - "The availability of over 1,100 REST APIs to app developers makes it
+      easier for insurers to create secure, persona-based digital experiences." No portal,
+      auth, or documentation URL given.'
+  - url: https://www.eisgroup.com/wp-content/uploads/2022/10/aite-matrix-2020-u-s-pc-core-systems-evaluation.pdf
+    type: AnalystReport
+    note: Sole public ACORD evidence.
+  - url: https://www.eisgroup.com/company/partners/
+    type: Partners
+    note: '"APIs, low-code tools, modularity, and microservices give our partners the
+      freedom to build fast and with agility." No developer portal, sandbox, or SDK link.'
+  - url: https://github.com/eisgroup
+    type: GitHubOrganization
+    note: 2 public repos - kraken-rules, ui-render. No API definitions.
+  - url: https://www.postman.com/eis-group-8390
+    type: Postman
+    note: Empty team profile; 0 public collections.
+actions:
+  openapiHarvested: false
+  openapiDirectoryCreated: false
+  apisYmlApisEmpty: true
+  reason: |
+    No public, self-serve API surface exists for EIS Group. Every documented API is behind
+    the docs.eisgroup.com HTTP Basic wall or inside a licensed implementation. Per the
+    insurance-sector bootstrap rules, apis[] is left empty and the record stands as an
+    honest stub rather than inventing an API family from marketing copy.

@@ -1,0 +1,64 @@
+aid: eis-group
+url: https://raw.githubusercontent.com/api-evangelist/eis-group/refs/heads/main/apis.yml
+name: EIS Group
+kind: company
+description: EIS Group (EIS Ltd) is a United States core-systems vendor for insurance,
+  founded in 2008 out of Exigen Insurance Solutions and headquartered in San Francisco,
+  California. EIS sells the EIS Platform and EIS OneSuite — a cloud-native, microservices
+  core suite covering customer management, policy administration, billing, and claims
+  — across group benefits, property and casualty / general, protection, life and annuities,
+  and pet insurance. EIS markets itself as API-first and claims thousands of open REST
+  APIs (1,100 digital APIs announced in 2019, 9,000+ claimed for OneSuite) fronted by
+  the EIS DXP API middleware, but none of that surface is public. There is no self-serve
+  developer portal on eisgroup.com; the documentation host docs.eisgroup.com answers
+  HTTP 401 behind an HTTP Basic realm named "EIS Group Users", so the entire API
+  reference is a customer/partner login wall. No OpenAPI, Swagger, GraphQL, AsyncAPI,
+  or public Postman collection could be retrieved. The only public code EIS ships is
+  two open-source GitHub repositories (kraken-rules, ui-render), which are libraries
+  rather than APIs. ACORD is attested only indirectly — an analyst evaluation hosted on
+  eisgroup.com states the system integrates using "web services, APIs, RESTful APIs,
+  ACORD and certified ACORD" — with no ACORD artifacts, AL3 mappings, or IVANS/agency-download
+  detail published. This is the canonical United States core-systems posture — the APIs
+  exist and are sold, but they are reachable only through a licensed implementation.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- United States
+- Core Systems
+- Policy Administration
+- Claims
+- Billing
+- Underwriting
+- Property and Casualty
+- Life Insurance
+- Employee Benefits
+- Insurtech
+- ACORD
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.eisgroup.com/
+- type: Documentation
+  url: https://docs.eisgroup.com/
+- type: Blog
+  url: https://www.eisgroup.com/blog/
+- type: BlogRSS
+  url: https://www.eisgroup.com/feed/
+- type: Newsroom
+  url: https://www.eisgroup.com/company/newsroom/
+- type: Partners
+  url: https://www.eisgroup.com/company/partners/
+- type: PartnerApplication
+  url: https://www.eisgroup.com/company/partner-application/
+- type: GitHubOrganization
+  url: https://github.com/eisgroup
+- type: LinkedIn
+  url: https://www.linkedin.com/company/eisgroupltd
+- type: Contact
+  url: https://www.eisgroup.com/company/contact/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
