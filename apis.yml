@@ -25,6 +25,17 @@ description: EIS Group (EIS Ltd) is a United States core-systems vendor for insu
   core platform provider to obtain. One first-party package is public, eis-ui-render on npm.
   This is the canonical United States core-systems posture — the APIs
   exist and are sold, but they are reachable only through a licensed implementation.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
